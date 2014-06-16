@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Liesbeeck Gardens &middot; Room allocation</title>
+    <title>Liesbeeck Gardens &middot; Online</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -78,7 +78,7 @@
 
       <div class="jumbotron">
         <h1>LBG Online!</h1>
-        <p class="lead">Make sure you familarise yourself with the room layout and allocation process on vula before proceeding</p>
+        <p class="lead">Bringing the university residence online</p>
         <a class="btn btn-large btn-success" href="http://www.uctlbg.co.za/flats1.php">Proceed</a>
       </div>
 
