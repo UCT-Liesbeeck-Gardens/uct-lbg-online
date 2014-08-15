@@ -1,5 +1,5 @@
 <?php
-	require 'dbconnect.php';
+    require 'dbconnect.php';
 
 
     $stmt = $db->query("SHOW DATABASES LIKE '$dbname'");
@@ -7,7 +7,7 @@
 
     echo "\n";
 
-	
+    
     try{
 
         if($row_count == 0){
@@ -54,6 +54,7 @@
         require 'dbconnect.php';
         $sql = "CREATE TABLE IF NOT EXISTS $table_name_flats(
                     flat_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+                    flat_floor INT(5) NOT NULL,
                     flat_number VARCHAR(50) NOT NULL,
                     room_number VARCHAR(50) NOT NULL,
                     flat_type VARCHAR(50) NOT NULL,
@@ -90,6 +91,33 @@
 
     echo "Done creating tables \n \n";
 
+$data = array(
+    array('flat_floor'=>'2', 'flat_number'=>'122','room_number'=>'122A', 'flat_type'=>'BCA','additional_info'=>'Tese'),
+    array('flat_floor'=>'3', 'flat_number'=>'123', 'room_number'=>'123B', 'flat_type'=>'CCA','additional_info'=>'dfd')
+    );
+
+    try{
+        echo "Before try";
+        require 'dbconnect.php';
+
+        $stmt = $db->prepare('INSERT INTO '. $table_name_flats. '(flat_floor,flat_number, room_number, flat_type, additional_info) 
+                                            VALUES(:flat_floor,:flat_number, :room_number, :flat_type, :additional_info)');
+        $db->beginTransaction();
+
+        foreach ($data as &$row) {
+                    $stmt->execute(array_values($row));
+                }
+
+        //end transaction
+        $db->commit();        
+
+    }catch(PDOException $ex){
+            echo "Error inserting values \n";
+            echo $ex->getMessage();
+            echo "\n";
+            exit();
+        }
+ echo "Before Exit";
     exit;
 
 
@@ -101,8 +129,8 @@
 * Inserting sample data into db for testing.
 */
 
-	$sql = "INSERT INTO $table_name_flat(flat_id, room_number, additional_info, student_number, mobile_number)
-			VALUES
+    $sql = "INSERT INTO $table_name_flat(flat_id, room_number, additional_info, student_number, mobile_number)
+            VALUES
                 ('101A','101A','','',''),
                 ('101B','101B','','',''),
                 ('102A','102A','','',''),
@@ -580,11 +608,11 @@
                 ('637A','637A', '','',''),
                 ('637B','637B', '','',''),
                 ('638A','638A', '','',''),
-                ('638B','638B', '','','')";	
+                ('638B','638B', '','','')"; 
 
-	mysql_query($sql) or die("Error inserting values \n".mysql_error()); 
+    mysql_query($sql) or die("Error inserting values \n".mysql_error()); 
     echo "Done inserting values \n";
 
-	mysql_close($con);
+    mysql_close($con);
 ?>
 
