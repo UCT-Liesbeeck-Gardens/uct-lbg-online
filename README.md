@@ -7,5 +7,5 @@ Bringing the UCT-Liesbeeck gardens residence online
 - Communication
 - Reporting
 
-For the live demo [Visit UCT-LBG](www.uctlbg.co.za)
+For the live demo [Visit UCT-LBG](http://www.uctlbg.co.za)
 
