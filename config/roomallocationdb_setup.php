@@ -69,12 +69,14 @@
                     room_number VARCHAR(50) NOT NULL,
                     student_number VARCHAR(50) NOT NULL,
                     mobile_number VARCHAR(20) NOT NULL,
-                    email_address VARCHAR(50) NOT NULL
+                    email_address VARCHAR(50) NOT NULL,
+                    gender VARCHAR(50) NOT NULL,
+                    date_of_application DATETIME NOT NULL
                 );";
         $db->exec($sql);
         echo "Created $table_name_applications table. \n";    
 
-        $sql = "CREATE TABLE IF NOT EXISTS $$table_name_admins(
+        $sql = "CREATE TABLE IF NOT EXISTS $table_name_admins(
                     lbg_user_id INT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                     lbg_username VARCHAR(50) NOT NULL default '',
                     lbg_password VARCHAR(50) NOT NULL default ''
@@ -92,8 +94,95 @@
     echo "Done creating tables \n \n";
 
 $data = array(
-    array('flat_floor'=>'2', 'flat_number'=>'122','room_number'=>'122A', 'flat_type'=>'BCA','additional_info'=>'Tese'),
-    array('flat_floor'=>'3', 'flat_number'=>'123', 'room_number'=>'123B', 'flat_type'=>'CCA','additional_info'=>'dfd')
+    array('flat_floor'=>'1', 'flat_number'=>'101','room_number'=>'101A', 'flat_type'=>'TID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'101','room_number'=>'101B', 'flat_type'=>'TID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'102','room_number'=>'102A', 'flat_type'=>'TID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'102','room_number'=>'102B', 'flat_type'=>'TID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'103','room_number'=>'103A', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'103','room_number'=>'103B', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'103','room_number'=>'103C', 'flat_type'=>'DID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'104','room_number'=>'104A', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'104','room_number'=>'104B', 'flat_type'=>'DID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'105','room_number'=>'105A', 'flat_type'=>'TID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'105','room_number'=>'105B', 'flat_type'=>'TID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'106','room_number'=>'106A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'106','room_number'=>'106B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'107','room_number'=>'107A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'107','room_number'=>'107B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'108','room_number'=>'108A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'108','room_number'=>'108B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'109','room_number'=>'109A', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'109','room_number'=>'109B', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'109','room_number'=>'109C', 'flat_type'=>'DID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'110','room_number'=>'110A', 'flat_type'=>'TID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'110','room_number'=>'110A', 'flat_type'=>'TID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'111','room_number'=>'111A', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'111','room_number'=>'111B', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'111','room_number'=>'111C', 'flat_type'=>'DID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'112','room_number'=>'112A', 'flat_type'=>'TID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'112','room_number'=>'112B', 'flat_type'=>'TID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'113','room_number'=>'113A', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'113','room_number'=>'113A', 'flat_type'=>'DID','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'113','room_number'=>'113C', 'flat_type'=>'DID','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'116','room_number'=>'116A', 'flat_type'=>'VIV','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'116','room_number'=>'116B', 'flat_type'=>'VIV','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'116','room_number'=>'116C', 'flat_type'=>'VIV','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'116','room_number'=>'116D', 'flat_type'=>'VIV','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'117','room_number'=>'117A', 'flat_type'=>'VIV','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'117','room_number'=>'117B', 'flat_type'=>'VIV','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'117','room_number'=>'117C', 'flat_type'=>'VIV','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'117','room_number'=>'117D', 'flat_type'=>'VIV','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'121','room_number'=>'121', 'flat_type'=>'BCA','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'122','room_number'=>'122', 'flat_type'=>'BCA','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'123','room_number'=>'123', 'flat_type'=>'BCA','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'124','room_number'=>'124A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'124','room_number'=>'124B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'125','room_number'=>'125A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'125','room_number'=>'125B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'126','room_number'=>'126A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'126','room_number'=>'126B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'127','room_number'=>'127A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'127','room_number'=>'127B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'128','room_number'=>'128A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'128','room_number'=>'128B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'129','room_number'=>'129A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'129','room_number'=>'129B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'130','room_number'=>'130A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'130','room_number'=>'130B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'131','room_number'=>'131A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'131','room_number'=>'131B', 'flat_type'=>'TIT','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'132','room_number'=>'132', 'flat_type'=>'BCA','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'133','room_number'=>'133', 'flat_type'=>'BCA','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'134','room_number'=>'134', 'flat_type'=>'BCA','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'135','room_number'=>'135', 'flat_type'=>'BCA','additional_info'=>'none'),
+
+    array('flat_floor'=>'1', 'flat_number'=>'136','room_number'=>'136A', 'flat_type'=>'TIT','additional_info'=>'none'),
+    array('flat_floor'=>'1', 'flat_number'=>'136','room_number'=>'136B', 'flat_type'=>'TIT','additional_info'=>'none')
+
     );
 
     try{
