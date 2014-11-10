@@ -18,23 +18,12 @@
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         $arr_results = array_values($results);
 
+
         foreach ($arr_results as $key) {
-          echo $key['room_number'];
           $array[$array_index] = $key['room_number'];
           $array_index++;
         }
-
-          try{
-                $sql = "SELECT COUNT(*) FROM $table_name_flats"; 
-                $result_num_roms = $db->prepare($sql); 
-                $result_num_roms->execute(); 
-                $init_num_rows = (int)$result_num_roms->fetchColumn(); 
-
-                echo $init_num_rows;
-          }
-          catch(PDOException $ex){
-            echo $ex->getMessage();
-          }
+        $init_num_rows = sizeof($array);
 
     }catch(PDOException $ex){
         echo "Error fetching results";
@@ -60,11 +49,9 @@ $cols = $init_num_cols;// define number of columns
 $array_index = 0;
 for($tr=1;$tr<=$rows;$tr++){
 
-  echo sizeof($array);
-      
     echo "<tr>";
         for($td=1;$td<=$cols;$td++){
-          if($array_index > sizeof($array)){
+          if($array_index >= sizeof($array)){
               break;
             }
 
